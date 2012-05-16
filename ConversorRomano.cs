@@ -8,7 +8,6 @@ namespace NumerosRomanosTeste
     {
         public int NumeroDecimal { get; set; }
         public string NomeRomano { get; set; }
-        public bool Repete { get; set; }
     }
 
     public class NumeroRomanoLista : List<NumeroRomano>
@@ -37,51 +36,72 @@ namespace NumerosRomanosTeste
             var numeroRomano = new NumeroRomano();
             numeroRomano.NumeroDecimal = 0;
             numeroRomano.NomeRomano = "";
-            numeroRomano.Repete = false;
             _romanos.Add(numeroRomano);
 
             numeroRomano = new NumeroRomano();
             numeroRomano.NumeroDecimal = 1;
             numeroRomano.NomeRomano = "I";
-            numeroRomano.Repete = true;
             _romanos.Add(numeroRomano);
 
             numeroRomano = new NumeroRomano();
             numeroRomano.NumeroDecimal = 5;
             numeroRomano.NomeRomano = "V";
-            numeroRomano.Repete = false;
             _romanos.Add(numeroRomano);
 
             numeroRomano = new NumeroRomano();
             numeroRomano.NumeroDecimal = 10;
             numeroRomano.NomeRomano = "X";
-            numeroRomano.Repete = true;
             _romanos.Add(numeroRomano);
 
             numeroRomano = new NumeroRomano();
             numeroRomano.NumeroDecimal = 50;
             numeroRomano.NomeRomano = "L";
-            numeroRomano.Repete = false;
             _romanos.Add(numeroRomano);
 
             numeroRomano = new NumeroRomano();
             numeroRomano.NumeroDecimal = 100;
             numeroRomano.NomeRomano = "C";
-            numeroRomano.Repete = true;
+            _romanos.Add(numeroRomano);
+
+            numeroRomano = new NumeroRomano();
+            numeroRomano.NumeroDecimal = 500;
+            numeroRomano.NomeRomano = "D";
+            _romanos.Add(numeroRomano);
+
+            numeroRomano = new NumeroRomano();
+            numeroRomano.NumeroDecimal = 1000;
+            numeroRomano.NomeRomano = "M";
+            _romanos.Add(numeroRomano);
+
+            numeroRomano = new NumeroRomano();
+            numeroRomano.NumeroDecimal = 10000;
+            numeroRomano.NomeRomano = "X'";
             _romanos.Add(numeroRomano);
         }
 
         public string ConverterDecimal(int numero)
         {
-            if (numero >= 1 && numero <= 10)
+            if (numero <= 10)
             {
-                return ObterLetras(numero, 1, 5, 10);    
+                string unidade = ObterLetras(numero, 1, 5, 10);
+                return unidade;
             }
-            if (numero >= 11 && numero <= 100)
+            if (numero <= 100)
             {
-                return ObterLetras(numero/10, 10, 50, 100);
+                string dezena = ObterLetras(numero/10, 10, 50, 100);
+                return dezena + ConverterDecimal(numero % 10);
             }
-            
+            if (numero <= 1000)
+            {
+                string centena = ObterLetras(numero/100, 100, 500, 1000);
+                return centena + ConverterDecimal(numero % 100);
+            }
+            if (numero <= 10000)
+            {
+                string milhar = ObterLetras(numero/1000, 1000, 5000, 10000);
+                return milhar + ConverterDecimal(numero % 1000);
+            }
+
             return string.Empty;
         }
 
@@ -91,6 +111,8 @@ namespace NumerosRomanosTeste
         {
             switch (numero)
             {
+                case 0:
+                    return "";
                 case 1:
                     return _romanos.GetNome(anterior);
                 case 2:

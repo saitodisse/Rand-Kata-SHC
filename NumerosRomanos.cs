@@ -36,5 +36,33 @@ namespace NumerosRomanosTeste
             var conv = new ConversorRomano();
             Assert.AreEqual(romano, conv.ConverterDecimal(num));
         }
+
+        [TestCase(100, "C")]
+        [TestCase(200, "CC")]
+        [TestCase(300, "CCC")]
+        [TestCase(400, "CD")]
+        [TestCase(500, "D")]
+        [TestCase(600, "DC")]
+        [TestCase(700, "DCC")]
+        [TestCase(800, "DCCC")]
+        [TestCase(900, "CM")]
+        [TestCase(1000, "M")]
+        public void Centenas(int num, string romano)
+        {
+            var conv = new ConversorRomano();
+            Assert.AreEqual(romano, conv.ConverterDecimal(num));
+        }
+
+        [TestCase(11, "XI")]
+        [TestCase(33, "XXXIII")]
+        [TestCase(87, "LXXXVII")]
+        [TestCase(96, "XCVI")]
+        [TestCase(1388, "MCCCLXXXVIII")]
+        public void Juncoes(int num, string romano)
+        {
+            var conv = new ConversorRomano();
+            Assert.AreEqual(romano, conv.ConverterDecimal(num));
+        }
+
     }
 }
