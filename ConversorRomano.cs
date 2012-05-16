@@ -74,8 +74,33 @@ namespace NumerosRomanosTeste
             _romanos.Add(numeroRomano);
 
             numeroRomano = new NumeroRomano();
+            numeroRomano.NumeroDecimal = 5000;
+            numeroRomano.NomeRomano = "V'";
+            _romanos.Add(numeroRomano);
+
+            numeroRomano = new NumeroRomano();
             numeroRomano.NumeroDecimal = 10000;
             numeroRomano.NomeRomano = "X'";
+            _romanos.Add(numeroRomano);
+
+            numeroRomano = new NumeroRomano();
+            numeroRomano.NumeroDecimal = 50000;
+            numeroRomano.NomeRomano = "L'";
+            _romanos.Add(numeroRomano);
+
+            numeroRomano = new NumeroRomano();
+            numeroRomano.NumeroDecimal = 100000;
+            numeroRomano.NomeRomano = "C'";
+            _romanos.Add(numeroRomano);
+
+            numeroRomano = new NumeroRomano();
+            numeroRomano.NumeroDecimal = 500000;
+            numeroRomano.NomeRomano = "D'";
+            _romanos.Add(numeroRomano);
+
+            numeroRomano = new NumeroRomano();
+            numeroRomano.NumeroDecimal = 1000000;
+            numeroRomano.NomeRomano = "M'";
             _romanos.Add(numeroRomano);
         }
 
@@ -89,20 +114,35 @@ namespace NumerosRomanosTeste
             if (numero <= 100)
             {
                 string dezena = ObterLetras(numero/10, 10, 50, 100);
-                return dezena + ConverterDecimal(numero % 10);
+                string converterDecimal = dezena + " " + ConverterDecimal(numero%10);
+                return converterDecimal.Trim();
             }
             if (numero <= 1000)
             {
                 string centena = ObterLetras(numero/100, 100, 500, 1000);
-                return centena + ConverterDecimal(numero % 100);
+                string converterDecimal = centena + " " + ConverterDecimal(numero%100);
+                return converterDecimal.Trim();
             }
             if (numero <= 10000)
             {
                 string milhar = ObterLetras(numero/1000, 1000, 5000, 10000);
-                return milhar + ConverterDecimal(numero % 1000);
+                string converterDecimal = milhar + " " + ConverterDecimal(numero%1000);
+                return converterDecimal.Trim();
+            }
+            if (numero <= 100000)
+            {
+                string milhar = ObterLetras(numero/10000, 10000, 50000, 100000);
+                string converterDecimal = milhar + " " + ConverterDecimal(numero%10000);
+                return converterDecimal.Trim();
+            }
+            if (numero <= 1000000)
+            {
+                string milhar = ObterLetras(numero/100000, 100000, 500000, 1000000);
+                string converterDecimal = milhar + " " + ConverterDecimal(numero%100000);
+                return converterDecimal.Trim();
             }
 
-            return string.Empty;
+            return "o número " + numero + " não é suportado";
         }
 
 
@@ -134,36 +174,7 @@ namespace NumerosRomanosTeste
                 case 10:
                     return _romanos.GetNome(proximo);
                 default:
-                    throw new Exception("erro numero = " + numero);
-                    //int dezena = numero/10;
-                    //string primeiroCaracter;
-                    //if (dezena < 5)
-                    //{
-                    //    primeiroCaracter = ObterLetras(dezena, 10, 0, 50);
-                    //}
-                    //else
-                    //{
-                    //    primeiroCaracter = ObterLetras(dezena, 5, 10, 50);
-                    //}
-
-                    //string segundoCaracter;
-
-                    //int unidade = numero % 10;
-                    //if (unidade <= 0)
-                    //{
-                    //    return primeiroCaracter;
-                    //}
-                    //else if (unidade > 5 && unidade <= 10)
-                    //{
-                    //    unidade -= 5;
-                    //    segundoCaracter = ObterLetras(unidade, 1, 5, 10);
-                    //    return primeiroCaracter + segundoCaracter;
-                    //}
-                    //else
-                    //{
-                    //    segundoCaracter = ObterLetras(unidade, 1, 0, 5);
-                    //    return primeiroCaracter + segundoCaracter;
-                    //}
+                    throw new Exception("Erro, o número " + numero + " não é suportado.");
             }
         }
     }

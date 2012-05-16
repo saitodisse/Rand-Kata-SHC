@@ -53,11 +53,13 @@ namespace NumerosRomanosTeste
             Assert.AreEqual(romano, conv.ConverterDecimal(num));
         }
 
-        [TestCase(11, "XI")]
-        [TestCase(33, "XXXIII")]
-        [TestCase(87, "LXXXVII")]
-        [TestCase(96, "XCVI")]
-        [TestCase(1388, "MCCCLXXXVIII")]
+        [TestCase(11, "X I")]
+        [TestCase(33, "XXX III")]
+        [TestCase(87, "LXXX VII")]
+        [TestCase(96, "XC VI")]
+        [TestCase(1388, "M CCC LXXX VIII")]
+        [TestCase(8888, "V'MMM DCCC LXXX VIII")]
+        [TestCase(1000000, "M'")]
         public void Juncoes(int num, string romano)
         {
             var conv = new ConversorRomano();
