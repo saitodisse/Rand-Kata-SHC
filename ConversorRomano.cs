@@ -73,17 +73,13 @@ namespace NumerosRomanosTeste
 
         public string ConverterDecimal(int numero)
         {
-            if (numero >= 1 && numero <= 5)
+            if (numero >= 1 && numero <= 10)
             {
-                return ObterLetras(numero, 1, 0, 5);
+                return ObterLetras(numero, 1, 5, 10);    
             }
-            if (numero >= 6 && numero <= 10)
+            if (numero >= 11 && numero <= 100)
             {
-                return ObterLetras(numero - 5, 1, 5, 10);    
-            }
-            if (numero >= 11 && numero <= 99)
-            {
-                return ObterLetras(numero, 1, 5, 10);
+                return ObterLetras(numero/10, 10, 50, 100);
             }
             
             return string.Empty;
@@ -96,45 +92,56 @@ namespace NumerosRomanosTeste
             switch (numero)
             {
                 case 1:
-                    return _romanos.GetNome(atual) + _romanos.GetNome(anterior);
+                    return _romanos.GetNome(anterior);
                 case 2:
-                    return _romanos.GetNome(atual) + _romanos.GetNome(anterior) + _romanos.GetNome(anterior);
+                    return _romanos.GetNome(anterior) + _romanos.GetNome(anterior);
                 case 3:
-                    return _romanos.GetNome(atual) + _romanos.GetNome(anterior) + _romanos.GetNome(anterior) + _romanos.GetNome(anterior);
+                    return _romanos.GetNome(anterior) + _romanos.GetNome(anterior) + _romanos.GetNome(anterior);
                 case 4:
-                    return _romanos.GetNome(anterior) + _romanos.GetNome(proximo);
+                    return _romanos.GetNome(anterior) + _romanos.GetNome(atual);
                 case 5:
+                    return _romanos.GetNome(atual);
+                case 6:
+                    return _romanos.GetNome(atual) + _romanos.GetNome(anterior);
+                case 7:
+                    return _romanos.GetNome(atual) + _romanos.GetNome(anterior) + _romanos.GetNome(anterior);
+                case 8:
+                    return _romanos.GetNome(atual) + _romanos.GetNome(anterior) + _romanos.GetNome(anterior) + _romanos.GetNome(anterior);
+                case 9:
+                    return _romanos.GetNome(anterior) + _romanos.GetNome(proximo);
+                case 10:
                     return _romanos.GetNome(proximo);
                 default:
-                    int dezena = numero/10;
-                    string primeiroCaracter;
-                    if (dezena < 5)
-                    {
-                        primeiroCaracter = ObterLetras(dezena, 10, 0, 50);
-                    }
-                    else
-                    {
-                        primeiroCaracter = ObterLetras(dezena, 5, 10, 50);
-                    }
+                    throw new Exception("erro numero = " + numero);
+                    //int dezena = numero/10;
+                    //string primeiroCaracter;
+                    //if (dezena < 5)
+                    //{
+                    //    primeiroCaracter = ObterLetras(dezena, 10, 0, 50);
+                    //}
+                    //else
+                    //{
+                    //    primeiroCaracter = ObterLetras(dezena, 5, 10, 50);
+                    //}
 
-                    string segundoCaracter;
+                    //string segundoCaracter;
 
-                    int unidade = numero % 10;
-                    if (unidade <= 0)
-                    {
-                        return primeiroCaracter;
-                    }
-                    else if (unidade > 5 && unidade <= 10)
-                    {
-                        unidade -= 5;
-                        segundoCaracter = ObterLetras(unidade, 1, 5, 10);
-                        return primeiroCaracter + segundoCaracter;
-                    }
-                    else
-                    {
-                        segundoCaracter = ObterLetras(unidade, 1, 0, 5);
-                        return primeiroCaracter + segundoCaracter;
-                    }
+                    //int unidade = numero % 10;
+                    //if (unidade <= 0)
+                    //{
+                    //    return primeiroCaracter;
+                    //}
+                    //else if (unidade > 5 && unidade <= 10)
+                    //{
+                    //    unidade -= 5;
+                    //    segundoCaracter = ObterLetras(unidade, 1, 5, 10);
+                    //    return primeiroCaracter + segundoCaracter;
+                    //}
+                    //else
+                    //{
+                    //    segundoCaracter = ObterLetras(unidade, 1, 0, 5);
+                    //    return primeiroCaracter + segundoCaracter;
+                    //}
             }
         }
     }
