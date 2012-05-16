@@ -29,6 +29,10 @@ namespace NumerosRomanosTeste
         [TestCase(31, "XXXI")]
         [TestCase(39, "XXXIX")]
         [TestCase(40, "XL")]
+        [TestCase(49, "XLIX")]
+        [TestCase(50, "L")]
+        [TestCase(60, "L")]
+        //[TestCase(60, "LX")]
         public void Deve_Retornar_I_Para_1(int num, string romano)
         {
             ConversorRomano conv = new ConversorRomano();

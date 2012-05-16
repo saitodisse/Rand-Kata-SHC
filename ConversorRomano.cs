@@ -81,7 +81,7 @@ namespace NumerosRomanosTeste
             {
                 return ObterLetras(numero - 5, 1, 5, 10);    
             }
-            if (numero >= 11 && numero <= 39)
+            if (numero >= 11 && numero <= 99)
             {
                 return ObterLetras(numero, 1, 5, 10);
             }
@@ -108,13 +108,13 @@ namespace NumerosRomanosTeste
                 default:
                     int dezena = numero/10;
                     string primeiroCaracter;
-                    if (dezena < 4)
+                    if (dezena < 5)
                     {
                         primeiroCaracter = ObterLetras(dezena, 10, 0, 50);
                     }
                     else
                     {
-                        primeiroCaracter = ObterLetras(dezena, 10, 50, 100);
+                        primeiroCaracter = ObterLetras(dezena, 5, 10, 50);
                     }
 
                     string segundoCaracter;
