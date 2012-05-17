@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NumeroRomano.cs" />
+    <Compile Include="NumeroRomanoLista.cs" />
     <Compile Include="NumerosRomanos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ConversorRomano.cs" />
